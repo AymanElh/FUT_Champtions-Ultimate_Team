@@ -7,10 +7,238 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>FUT Champtions - Web Application App</title>
   </head>
-  <body>
+  <body class="bg-gray-900">
     <header></header>
 
-    <main class="font-monstserrat font-regular"></main>
+    <main class="flex flex-row max-900:flex-col">
+      <div id="squad" class="w-[70vw] bg-green-400 flex-2 max-900:w-full max-900:h-screen"></div>
+
+      <div id="form-container" class="w-[30vw] bg-gray-900 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center">
+        <form action="#" class="flex flex-col gap-8 justify-center align-center">
+          <div id="player-infos" class="flex flex-col gap-2">
+            <div id="player-name" class="flex flex-col ga-1">
+              <label
+                for="name-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Player Name</label
+              >
+              <input
+                type="text"
+                id="name-input"
+                placeholder="eg. Lionel Messi"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div id="player-photo">
+              <label
+                for="photo-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Photo input</label
+              >
+              <input
+                type="file"
+                id="photo-input"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <div id="nationality" class="flex flex-col gap-2">
+            <div id="player-nationality" class="flex flex-col">
+              <label
+                for="nationality-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Player Nationality</label
+              >
+              <input
+                type="text"
+                id="nationality-input"
+                placeholder="eg. Moroccan"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div id="flag" class="flex flex-col">
+              <label
+                for="flat-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Flag</label
+              >
+              <input
+                type="file"
+                id="flag-input"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <div id="club" class="flex flex-col gap-2">
+            <div id="player-club" class="flex flex-col">
+              <label
+                for="club-name-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Player Club</label
+              >
+              <input
+                type="text"
+                name="club name"
+                id="club-name-input"
+                placeholder="eg. Barcelona"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div id="club-logo" class="flex flex-col">
+              <label
+                for="club-logo-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Club Logo</label
+              >
+              <input
+                type="file"
+                id="club-logo-input"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+          <div id="player-position">
+            <label
+              for="position-input"
+              class="mb-2 text-sm font-medium text-white"
+              >Player position</label
+            >
+            <select
+              name="player position"
+              id="position-input"
+              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="CF">CF</option>
+              <option value="SS">SS</option>
+              <option value="RW">RW</option>
+              <option value="LW">LW</option>
+              <option value="AM">AM</option>
+              <option value="CM">CM</option>
+              <option value="RM">RM</option>
+              <option value="LM">LM</option>
+              <option value="LWB">LWB</option>
+              <option value="RWB">RWB</option>
+              <option value="LB">LB</option>
+              <option value="CB">CB</option>
+              <option value="RB">RB</option>
+              <option value="SW">SW</option>
+            </select>
+          </div>
+          <div id="player-statistics" class="flex flex-col gap-3">
+            <div class="flex gap-5">
+              <div id="player-rating" class="flex-1">
+                <label
+                  for="rating-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player Rating</label
+                >
+                <input
+                  type="number"
+                  id="rating-input"
+                  placeholder="eg. 93"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div id="player-pace" class="flex-1">
+                <label
+                  for="pace-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player Pace</label
+                >
+                <input
+                  type="number"
+                  id="pace-input"
+                  placeholder="eg.85"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div id="player-shooting" class="flex-1">
+                <label
+                  for="shooting-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player Shooting</label
+                >
+                <input
+                  type="number"
+                  id="shooting-input"
+                  placeholder="eg. 92"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div id="player-passing" class="flex-1">
+                <label
+                  for="passing-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player passing</label
+                >
+                <input
+                  type="number"
+                  id="passing-input"
+                  placeholder="eg. 91"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div id="player-dribbling" class="flex-1">
+                <label
+                  for="dribbling-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player Dribbling</label
+                >
+                <input
+                  type="number"
+                  id="dribbling"
+                  placeholder="eg. 96"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div id="player-defending" class="flex-1">
+                <label
+                  for="defending-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Player defending</label
+                >
+                <input
+                  type="number"
+                  id="defending-input"
+                  placeholder="eg. 35"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div id="player-physical">
+              <label
+                for="physical-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Player physical</label
+              >
+              <input
+                type="number"
+                id="pysical-input"
+                placeholder="eg. 65"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <button
+            id="add-player"
+            type="button"
+            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 shadow-lg  dark:shadow-lg shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            Add Player
+          </button>
+        </form>
+      </div>
+    </main>
 
     <footer></footer>
 
