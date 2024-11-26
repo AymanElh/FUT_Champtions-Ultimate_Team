@@ -3,18 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/output.css" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/output.css" />
     <title>FUT Champtions - Web Application App</title>
   </head>
-  <body class="bg-gray-900">
-    <header></header>
-
+  <body class="bg-stadium bg-no-repeat bg-cover h-screen">
     <main class="flex flex-row max-900:flex-col">
-      <div id="squad" class="w-[70vw] bg-green-400 flex-2 max-900:w-full max-900:h-screen"></div>
+      <div
+        id="squad"
+        class="w-[70vw] flex-2 grid items-center max-900:w-full max-900:h-screen"
+      >
+        <div id="squad-container" class="">
+          <div class="player GK">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player LB">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player CB1">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player CB2">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player RB">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player CM1">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player CM2">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player CM3">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player LW">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player ST">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+          <div class="player RW">
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+          </div>
+        </div>
+      </div>
 
-      <div id="form-container" class="w-[30vw] bg-gray-900 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center">
-        <form action="#" class="flex flex-col gap-8 justify-center align-center">
+      <div
+        id="form-container"
+        class="m-5 bg-red-600 rounded-lg overflow-scroll shadow-lg w-[30vw] h-[100%] bg-white/50 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center"
+      >
+        <form
+          class="flex flex-col gap-3 backdrop:blur-md justify-center align-center"
+        >
           <div id="player-infos" class="flex flex-col gap-2">
             <div id="player-name" class="flex flex-col ga-1">
               <label
@@ -232,15 +307,13 @@
           <button
             id="add-player"
             type="button"
-            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 shadow-lg  dark:shadow-lg shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 shadow-lg dark:shadow-lg shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
             Add Player
           </button>
         </form>
       </div>
     </main>
-
-    <footer></footer>
 
     <script src="./assets/js/main.js"></script>
   </body>
