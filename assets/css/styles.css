@@ -1,7 +1,15 @@
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 #squad-container {
   margin: 0 auto;
-  max-width: 1000px;
-  height: auto;
+  width: 58rem;
+  height: 42rem;
   background-image: url(../img/stadium.svg); /* Adjust path as necessary */
   background-repeat: no-repeat;
   /* background-color: red; */
@@ -15,81 +23,96 @@
   "LB CB1 GK CB2 RB"
   ". . GK . .";
   gap: 10px; /* Optional gap between grid items */
+  z-index: 99;
 }
 
 .GK {
   grid-area: GK;
-  width: 60%;
+  width: 70%;
   justify-self: center; 
   align-self: center;   
 }
 
 .LB {
   grid-area: LB;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .CB1 {
   grid-area: CB1;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .CB2 {
   grid-area: CB2;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .RB {
   grid-area: RB;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .CM1 {
   grid-area: CM1;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .CM2 {
   grid-area: CM2;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .CM3 {
   grid-area: CM3;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .ST {
   grid-area: ST;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .LW {
   grid-area: LW;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
 }
 
 .RW {
   grid-area: RW;
-  width: 60%;
+  width: 70%;
   justify-self: center;
   align-self: center;
+}
+
+.player-stats {
+  transform: translate(12px ,-100px);
+  font-size: 0.6rem;
+  color: white;
+}
+
+.player-name, .player-flags {
+  transform: translateX(-15px)
+}
+
+.player-img {
+  transform: translate(12px, -70px)
 }
