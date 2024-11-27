@@ -9,21 +9,28 @@
 #squad-container {
   margin: 0 auto;
   width: 58rem;
-  height: 42rem;
+  height: 48rem;
   background-image: url(../img/stadium.svg); /* Adjust path as necessary */
   background-repeat: no-repeat;
   /* background-color: red; */
   background-position: center;
   background-size: cover;
   display: grid;
+}
+
+.formation433 {
   grid-template-areas:
   ". LW ST RW ." 
   ". CM1 CM2 CM3 ."
   "LB CB1 . CB2 RB"
   "LB CB1 GK CB2 RB"
   ". . GK . .";
-  gap: 10px; /* Optional gap between grid items */
-  z-index: 99;
+  /* grid-template-areas:
+    ". LW LW ST ST RW RW ."
+    ". CM1 CM1 CM2 CM2 CM3 CM3 ."
+    "LB LB CB1 CB1 CB2 CB2 RB RB"
+    "LB CB1 . GK GK . CB2 RB"
+    ". . . GK GK . . ."; */
 }
 
 .GK {
@@ -115,4 +122,15 @@
 
 .player-img {
   transform: translate(12px, -70px)
+}
+
+.formation442 {
+  grid-template-areas:
+  ". LW . ST  ."
+  "CM1 CM2 . CM3 RW"
+  "LB CB1 . CB2 RB"
+  "LB CB1 GK CB2 RB"
+  ". . GK . ."
+  ;
+
 }

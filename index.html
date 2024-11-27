@@ -11,15 +11,16 @@
     <main class="flex max-900:flex-col">
       <div
         id="squad"
-        class="w-[70vw] flex-2 flex flex-col justify-center align-center gap-20 max-900:w-full max-900:h-screen"
+        class="w-[70vw] p-20 flex-2 flex flex-col justify-center align-center gap-20 max-900:w-full max-900:h-screen"
       >
-        <div id="squad-container" class="relative">
-          <div class="player GK relative">
+        <!-- Essential Players -->
+        <div id="squad-container" class="formation433 relative">
+          <div class="GK relative">
             <img
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="gk">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -37,7 +38,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="lb">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -55,7 +56,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="cb1">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -73,7 +74,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="cb2">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -91,7 +92,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="rb">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -109,7 +110,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="cm1">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -127,7 +128,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="cm2">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -145,7 +146,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="cm3">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -163,7 +164,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="lw">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -177,22 +178,22 @@
             </button>
           </div>
           <div class="player ST relative">
-              <img
-                src="./assets/img/placeholder-card-normal.webp"
-                alt="placeholder card"
-              />
-              <button class="plus-btn text-green-500">
-                <span class="absolute top-[4.2rem] left-[2.7rem]">
-                  <svg class="" viewBox="0 0 36 42" fill="none" width="36">
-                    <path
-                      d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    ></path>
-                  </svg>
-                </span>
-                <div class="font-lg absolute top-[4.6rem] left-[3.5rem]">+</div>
-              </button>
+            <img
+              src="./assets/img/placeholder-card-normal.webp"
+              alt="placeholder card"
+            />
+            <button class="plus-btn text-green-500" data-type="st">
+              <span class="absolute top-[4.2rem] left-[2.7rem]">
+                <svg class="" viewBox="0 0 36 42" fill="none" width="36">
+                  <path
+                    d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+              </span>
+              <div class="font-lg absolute top-[4.6rem] left-[3.5rem]">+</div>
+            </button>
 
             <!-- <div
               class="relative w-[130px] h-[200px] bg-black/80 rounded-md shadow-lg"
@@ -251,7 +252,7 @@
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
             />
-            <button class="plus-btn text-green-500">
+            <button class="plus-btn text-green-500" data-type="rw">
               <span class="absolute top-[4.2rem] left-[2.7rem]">
                 <svg class="" viewBox="0 0 36 42" fill="none" width="36">
                   <path
@@ -266,8 +267,11 @@
           </div>
         </div>
 
-        <div class="substitutions bg-slate-400">
-          <h1 class="text-center font-bold text-2xl">Substitutions</h1>
+        <!-- Substitution -->
+        <div
+          class="substitutions bg-slate-400 flex justify-center align-center flex-wrap"
+        >
+          <!-- <h1 class="text-center font-bold text-2xl">Substitutions</h1> -->
           <div class="flex">
             <div class="subs-player flex gap-5">
               <div class="subs-player relative">
@@ -364,14 +368,21 @@
         </div>
       </div>
 
+      <!-- Add player form -->
       <div
         id="form-container"
-        class="sticky top-0 bg-red-600 rounded-lg overflow-y-scroll shadow-lg w-[30vw] h-[100vh] bg-white/50 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center"
+        class="sticky top-0 rounded-lg shadow-lg flex flex-col gap-3 w-[30vw] h-[100vh] overflow-y-scroll bg-white/50 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center"
       >
+        <label for="formation-select">Choose Your formation</label>
+        <select name="formation" id="formation-select">
+          <option value="433">4-3-3</option>
+          <option value="442">4-4-2</option>
+        </select>
         <form
-          class="flex flex-col gap-3 backdrop:blur-md justify-center align-center"
+          id="player-form"
+          class="hidden flex-col gap-3 backdrop:blur-md justify-center align-center"
         >
-          <div id="player-infos" class="flex flex-col gap-2">
+          <div id="player-infos" class="flex-col gap-2">
             <div id="player-name" class="flex flex-col ga-1">
               <label
                 for="name-input"
@@ -415,7 +426,7 @@
             </div>
             <div id="flag" class="flex flex-col">
               <label
-                for="flat-input"
+                for="flag-input"
                 class="mb-2 text-sm font-medium text-white"
                 >Flag</label
               >
@@ -455,48 +466,63 @@
               />
             </div>
           </div>
-          <div id="player-position">
+
+          <div id="rating" class="flex-1">
             <label
-              for="position-input"
+              for="rating-input"
               class="mb-2 text-sm font-medium text-white"
-              >Player position</label
+              >Player Rating</label
             >
-            <select
-              name="player position"
-              id="position-input"
+            <input
+              type="number"
+              id="rating-input"
+              placeholder="eg. 93"
               class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="CF">CF</option>
-              <option value="SS">SS</option>
-              <option value="RW">RW</option>
-              <option value="LW">LW</option>
-              <option value="AM">AM</option>
-              <option value="CM">CM</option>
-              <option value="RM">RM</option>
-              <option value="LM">LM</option>
-              <option value="LWB">LWB</option>
-              <option value="RWB">RWB</option>
-              <option value="LB">LB</option>
-              <option value="CB">CB</option>
-              <option value="RB">RB</option>
-              <option value="SW">SW</option>
-            </select>
+            />
           </div>
-          <div id="player-statistics" class="flex flex-col gap-3">
+
+          <!-- <div id="player-position">
+              <label
+                for="position-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Player position</label
+              >
+              <select
+                name="player position"
+                id="position-input"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="CF">CF</option>
+                <option value="SS">SS</option>
+                <option value="RW">RW</option>
+                <option value="LW">LW</option>
+                <option value="AM">AM</option>
+                <option value="CM">CM</option>
+                <option value="RM">RM</option>
+                <option value="LM">LM</option>
+                <option value="LWB">LWB</option>
+                <option value="RWB">RWB</option>
+                <option value="LB">LB</option>
+                <option value="CB">CB</option>
+                <option value="RB">RB</option>
+                <option value="SW">SW</option>
+              </select>
+            </div> -->
+          <div id="player-statistics" class="flex-col gap-3">
             <div class="flex gap-5">
-              <div id="player-rating" class="flex-1">
-                <label
-                  for="rating-input"
-                  class="mb-2 text-sm font-medium text-white"
-                  >Player Rating</label
-                >
-                <input
-                  type="number"
-                  id="rating-input"
-                  placeholder="eg. 93"
-                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
+              <!-- <div id="player-rating" class="flex-1">
+                  <label
+                    for="rating-input"
+                    class="mb-2 text-sm font-medium text-white"
+                    >Player Rating</label
+                  >
+                  <input
+                    type="number"
+                    id="rating-input"
+                    placeholder="eg. 93"
+                    class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div> -->
               <div id="player-pace" class="flex-1">
                 <label
                   for="pace-input"
@@ -579,6 +605,96 @@
               <input
                 type="number"
                 id="pysical-input"
+                placeholder="eg. 65"
+                class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <div id="gk-statistics" class="flex-col gap-3">
+            <div class="flex gap-5">
+              <div id="gk-diving" class="flex-1">
+                <label
+                  for="diving-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Goal Kepper Diving</label
+                >
+                <input
+                  type="number"
+                  id="diving-input"
+                  placeholder="eg.85"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div id="gk-handling" class="flex-1">
+                <label
+                  for="handling-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Goal Kepper handling</label
+                >
+                <input
+                  type="number"
+                  id="handling-input"
+                  placeholder="eg. 92"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div id="gk-kicking" class="flex-1">
+                <label
+                  for="kicking-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Goal Kepper kicking</label
+                >
+                <input
+                  type="number"
+                  id="kicking-input"
+                  placeholder="eg. 91"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div id="gk-reflexes" class="flex-1">
+                <label
+                  for="reflexes-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Goal Kepper reflexes</label
+                >
+                <input
+                  type="number"
+                  id="reflexes-input"
+                  placeholder="eg. 96"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div id="gk-speed" class="flex-1">
+                <label
+                  for="speed-input"
+                  class="mb-2 text-sm font-medium text-white"
+                  >Goal Kepper speed</label
+                >
+                <input
+                  type="number"
+                  id="speed-input"
+                  placeholder="eg. 35"
+                  class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div id="gk-positioning">
+              <label
+                for="positioning-input"
+                class="mb-2 text-sm font-medium text-white"
+                >Goal Kepper positioning</label
+              >
+              <input
+                type="number"
+                id="positioning-input"
                 placeholder="eg. 65"
                 class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
               />
