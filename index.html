@@ -9,13 +9,15 @@
   </head>
   <body class="bg-stadium bg-no-repeat bg-cover h-screen">
     <main class="flex max-900:flex-col">
+
+      <!-- Team Instructions -->
       <div
         id="squad"
         class="w-[70vw] p-20 flex-2 flex flex-col justify-center align-center gap-20 max-900:w-full max-900:h-screen"
       >
         <!-- Essential Players -->
         <div id="squad-container" class="formation433 relative">
-          <div class="GK relative">
+          <div class="player GK relative">
             <img
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
@@ -177,7 +179,8 @@
               <div class="font-lg absolute top-[4.6rem] left-[3.5rem]">+</div>
             </button>
           </div>
-          <div class="player ST relative">
+          <div class="player ST ">
+            <div class="relative">
             <img
               src="./assets/img/placeholder-card-normal.webp"
               alt="placeholder card"
@@ -194,6 +197,7 @@
               </span>
               <div class="font-lg absolute top-[4.6rem] left-[3.5rem]">+</div>
             </button>
+          </div>
 
             <!-- <div
               class="relative w-[130px] h-[200px] bg-black/80 rounded-md shadow-lg"
@@ -373,11 +377,13 @@
         id="form-container"
         class="sticky top-0 rounded-lg shadow-lg flex flex-col gap-3 w-[30vw] h-[100vh] overflow-y-scroll bg-white/50 p-5 flex-1 max-900:w-full max-900:justify-center max-900:align-center"
       >
-        <label for="formation-select">Choose Your formation</label>
-        <select name="formation" id="formation-select">
-          <option value="433">4-3-3</option>
-          <option value="442">4-4-2</option>
-        </select>
+        <div class="">
+          <label for="formation-select">Choose Your formation</label>
+          <select name="formation" id="formation-select">
+            <option value="433">4-3-3</option>
+            <option value="442">4-4-2</option>
+          </select>
+        </div>
         <form
           id="player-form"
           class="hidden flex-col gap-3 backdrop:blur-md justify-center align-center"
@@ -576,7 +582,7 @@
                 >
                 <input
                   type="number"
-                  id="dribbling"
+                  id="dribbling-input"
                   placeholder="eg. 96"
                   class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                 />
