@@ -6,6 +6,18 @@ const addBtn = document.getElementById("add-player");
 const squad = document.getElementById("squad-container");
 
 
+function showModal() {
+  modal.classList.add("flex");
+  modal.classList.remove("hidden");
+}
+
+function hideModal() {
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+
+
+
 // fct to change formaiton
 function changeFormation(formation) {
 
@@ -23,18 +35,25 @@ let currentBtn = null;
 // Show the right form for the user
 const plusBtns = document.querySelectorAll(".plus-btn");
 
+const modal = document.getElementById("default-modal");
+const form = document.getElementById("player-form");
+const gkStats = document.getElementById("gk-statistics");
+const playerStats = document.getElementById("player-statistics");
+    
 plusBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const type = btn.getAttribute("data-type");
     currentBtn = btn;
 
-    document.getElementById("gk-statistics").classList.add("hidden");
-    document.getElementById("gk-statistics").classList.remove("flex");
+    gkStats.classList.add("hidden");
+    gkStats.classList.remove("flex");
 
-    document.getElementById("player-statistics").classList.add("hidden");
-    document.getElementById("player-statistics").classList.remove("flex");
+    playerStats.classList.add("hidden");
+    playerStats.classList.remove("flex");
 
-    document.getElementById("player-form").classList.replace("hidden", "flex");
+    // showing the modal 
+    form.classList.replace("hidden", "flex");
+    showModal();
 
     if (type === "gk") {
       document.getElementById("gk-statistics").classList.replace("hidden", "flex");
@@ -42,29 +61,32 @@ plusBtns.forEach((btn) => {
       document.getElementById("player-statistics").classList.replace("hidden", "flex");
     }
 
-
   });
 });
+
+
 
 document.getElementById("add-player").addEventListener("click", () => {
   if(currentBtn) {
     addPlayer(currentBtn);
   }
-  // console.log(players)
+
+  hideModal();
 })
 
 
 function addPlayer(btn) {
-  console.log(btn.parentElement.parentElement.classList[1])
+  // console.log(btn.parentElement.parentElement.classList[1])
   let type = btn.getAttribute("data-type");
 
 
   const playerName = document.getElementById("name-input").value.trim();
-  const playerPhoto = document.getElementById("photo-input").files[0]?.name || "";
+  const playerPhoto = document.getElementById("photo-input").files[0];
+  console.log(playerPhoto);
   const playerNationality = document.getElementById("nationality-input").value.trim();
-  const flag = document.getElementById("flag-input").files[0]?.name || "";
+  const flag = document.getElementById("flag-input").files[0];
   const playerClub = document.getElementById("club-name-input").value.trim();
-  const clubLogo = document.getElementById("club-logo-input").files[0]?.name || "";
+  const clubLogo = document.getElementById("club-logo-input").files[0];
   const playerRating = document.getElementById("rating-input").value.trim();
 
   let newPlayer = {
@@ -101,6 +123,7 @@ function addPlayer(btn) {
 
   players.push(newPlayer);
   console.log(players)
+  addPlayerToCard(newPlayer);
 }
 
 function resetInputs() {
@@ -126,7 +149,72 @@ function resetInputs() {
 }
 
 function addPlayerToCard(player) {
-  
+  const playerCard = document.createElement("div");
+  playerCard.id = `${player.position}-card`;
+  playerCard.classList.add(
+    "player-card",
+    "relative",
+    "w-[130px]",
+    "h-[200px]",
+    "bg-black/80",
+    "rounded-md",
+    "shadow-lg"
+  )
+
+
+  playerCard.innerHTML = `
+    <div
+        class="absolute inset-0 bg-cover bg-no-repeat rounded-md"
+        style="background-image: url('')"
+      ></div>
+
+      <div
+        class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
+      >
+        <div
+          class="w-[80px] h-[80px] rounded-full overflow-hidden mb-2"
+        >
+          <img
+            src="https://cdn.sofifa.net/players/158/023/25_120.png"
+            alt="Player"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <p class="font-bold text-lg text-center">Lionel Messi</p>
+
+        <div class="grid grid-cols-3 gap-1 mt-2 text-xs text-center">
+          <div>
+            <p>PAC</p>
+            <p>84</p>
+          </div>
+          <div>
+            <p>SHO</p>
+            <p>87</p>
+          </div>
+          <div>
+            <p>PAS</p>
+            <p>90</p>
+          </div>
+          <div>
+            <p>DRI</p>
+            <p>94</p>
+          </div>
+          <div>
+            <p>DEF</p>
+            <p>36</p>
+          </div>
+          <div>
+            <p>PHY</p>
+            <p>67</p>
+          </div>
+        </div>
+      </div>
+  `
+  const cardElement = document.querySelector(`.${player.position.toUpperCase()}`);
+  const firstChild = cardElement.firstElementChild;
+  firstChild.classList.add("hidden");
+  cardElement.appendChild(playerCard)
 }
 
 
