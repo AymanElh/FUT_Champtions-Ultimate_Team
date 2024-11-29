@@ -742,6 +742,26 @@ video {
   width: 100%;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-\[75\%\] {
+  width: 75%;
+}
+
+.w-\[80\] {
+  width: 80;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[150px\] {
+  width: 150px;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -802,6 +822,14 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.gap-\[0\.\] {
+  gap: 0.;
+}
+
+.gap-\[0\.6rem\] {
+  gap: 0.6rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {

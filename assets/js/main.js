@@ -167,15 +167,15 @@ function addPlayerToCard(player) {
     const playerCard = document.createElement("div");
     playerCard.id = `${player.position}-card`;
     playerCard.classList.add(
-        "scale-[1]",
         "player-card",
         "relative",
-        "w-full",
-        "h-full",
+        "w-[150px]",
+        "h-[200px]",
         "bg-black/80",
         "rounded-md",
         "shadow-lg",
-        "bg-green-500"
+        "bg-green-500",
+        "scale-x-[0.8]"
     )
     playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; // Adjust path if needed
     playerCard.style.backgroundSize = "cover"; // Ensures the image covers the element
@@ -184,7 +184,7 @@ function addPlayerToCard(player) {
 
     playerCard.innerHTML = `
     <div
-              class="relative w-[150px] h-[200px]  rounded-md shadow-lg"
+              class="relative w-[100px] h-[200px] rounded-md shadow-lg"
             >
               <div
                 class="absolute rounded-md"
@@ -206,84 +206,66 @@ function addPlayerToCard(player) {
 
                 <p class="font-bold text-sm text-center">${player.name}</p>
 
-                <div class="grid grid-cols-3 gap-1 mt-2 text-xs text-center">
+                <div class="grid grid-cols-3 mt-2 text-xs text-center">
                   <div>
-                    <p>PAC</p>
-                    <p>${player.stats.pace}</p>
+                    <p class="">PAC</p>
+                    <p class="">${player.stats.pace}</p>
                   </div>
                   <div>
-                    <p>SHO</p>
-                    <p>${player.stats.shooting}</p>
+                    <p class="">SHO</p>
+                    <p class="">${player.stats.shooting}</p>
                   </div>
                   <div>
-                    <p>PAS</p>
-                    <p>${player.stats.shooting}</p>
+                    <p class="">PAS</p>
+                    <p class="">${player.stats.shooting}</p>
                   </div>
                   <div>
-                    <p>DRI</p>
-                    <p>${player.stats.dribbling}</p>
+                    <p class="">DRI</p>
+                    <p class="">${player.stats.dribbling}</p>
                   </div>
                   <div>
-                    <p>DEF</p>
-                    <p>${player.stats.defending}</p>
+                    <p class="">DEF</p>
+                    <p class="">${player.stats.defending}</p>
                   </div>
                   <div>
-                    <p>PHY</p>
-                    <p>${player.stats.physical}</p>
+                    <p class="">PHY</p>
+                    <p class="">${player.stats.physical}</p>
                   </div>
                 </div>
               </div>
             </div>
   `
-
-// playerCard.innerHTML = `
-//   <div class="relative w-full h-full flex flex-col justify-between items-center text-white p-4">
-//     <!-- Player Image -->
-//     <div class="w-[80px] h-[80px] rounded-full overflow-hidden border-2  shadow-md bg-white">
-//       <img
-//         src="https://cdn.sofifa.net/players/158/023/25_120.png"
-//         alt="${player.name}"
-//         class="w-full h-full object-cover"
-//       />
-//     </div>
-
-//     <!-- Player Name -->
-//     <p class="font-bold text-sm text-center mt-2">${player.name}</p>
-
-//     <!-- Player Stats -->
-//     <div class="grid grid-cols-3 gap-2 mt-2 text-xs text-center">
-//       <div>
-//         <p>PAC</p>
-//         <p>${player.stats.pace}</p>
-//       </div>
-//       <div>
-//         <p>SHO</p>
-//         <p>${player.stats.shooting}</p>
-//       </div>
-//       <div>
-//         <p>PAS</p>
-//         <p>${player.stats.passing}</p>
-//       </div>
-//       <div>
-//         <p>DRI</p>
-//         <p>${player.stats.dribbling}</p>
-//       </div>
-//       <div>
-//         <p>DEF</p>
-//         <p>${player.stats.defending}</p>
-//       </div>
-//       <div>
-//         <p>PHY</p>
-//         <p>${player.stats.physical}</p>
-//       </div>
-//     </div>
-//   </div>
-// `;
-    const cardElement = document.querySelector(`.${player.position.toUpperCase()}`);
-    // console.log(cardElement);
-    const firstChild = cardElement.firstElementChild;
-    firstChild.classList.add("hidden");
-    cardElement.appendChild(playerCard)
+  
+    // check the player status
+    if(player.status === "main") {
+      console.log("it's a main player");
+      const cardElement = document.querySelector(`.${player.position.toUpperCase()}`);
+      // console.log(cardElement);
+      const firstChild = cardElement.firstElementChild;
+      firstChild.classList.add("hidden");
+      cardElement.appendChild(playerCard)
+    }
+     else {
+      console.log("Adding substitute player...");
+      const subItems = document.querySelectorAll(".subs-player");
+      let itemFilled = false;
+  
+      subItems.forEach((item) => {
+        // Find an empty substitute item
+        if (!item.classList.contains("filled") && !itemFilled) {
+          // console.log(item.firstElementChild);
+          item.firstElementChild.classList.add("hidden")
+          item.appendChild(playerCard); 
+          item.classList.add("filled"); 
+          itemFilled = true; 
+        }
+      });
+  
+      // If no slots are empty
+      if (!itemFilled) {
+        alert("No available substitution slots!");
+      }
+    }
 }
 
 function addSubs() {
@@ -330,7 +312,7 @@ function addSubs() {
   hideModal();
   players.push(newPlayer);
   console.log("add new sub player", players)
-
+  addPlayerToCard(newPlayer)
 }
 
 
