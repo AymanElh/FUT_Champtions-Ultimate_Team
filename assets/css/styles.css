@@ -7,7 +7,6 @@
 
 
 #squad-container {
-  margin: 0 auto;
   width: 55rem;
   height: 44rem;
   background-image: url(../img/stadium.svg); /* Adjust path as necessary */
@@ -16,6 +15,7 @@
   background-position: center;
   background-size: cover;
   display: grid;
+  gap: 10px;
 }
 
 .formation433 {

@@ -6,7 +6,8 @@ module.exports = {
       backgroundImage: {
         'stadium': "url('../img/stadium_background.webp')",
         'shadowStadium': "url('../img/stadium.svg')",
-        'card': "url('../img/badge_total_rush.webp')"
+        card: "url('/assets/img/badge_gold.webp')",
+
       },
       screens: {
         'max-900': {max: '900px'},
