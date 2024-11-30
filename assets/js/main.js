@@ -276,11 +276,19 @@ function addPlayerToCard(player) {
         }
       });
   
-      // If no slots are empty
+
       if (!itemFilled) {
         alert("No available substitution slots!");
       }
     }
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your Player added successfully",
+      showConfirmButton: false,
+      timer: 1500
+    });
 }
 
 function addSubs() {
@@ -334,16 +342,37 @@ function addSubs() {
 // Delete player function 
 function deletePlayer(cardId, playerName) {
   console.log("Deleting a player")
-  const playerCard = document.getElementById(cardId);
-  const defaultCard = playerCard.parentElement.firstElementChild;
-  // console.log("Player Card: ", playerCard)
-  // console.log("Fist element child", defaultCard);
-  const deletedPlayer = players.findIndex(item => item.name === playerName);
-  // console.log(deletedPlayer);
-  defaultCard.classList.remove("hidden");
-  document.getElementById(cardId).remove();
-  players.splice(0, 1)
-  console.log("Player after delet: ", players)
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      const playerCard = document.getElementById(cardId);
+      const defaultCard = playerCard.parentElement.firstElementChild;
+      // console.log("Player Card: ", playerCard)
+      // console.log("Fist element child", defaultCard);
+      const deletedPlayer = players.findIndex(item => item.name === playerName);
+      // console.log(deletedPlayer);
+      defaultCard.classList.remove("hidden");
+      document.getElementById(cardId).remove();
+      players.splice(deletedPlayer, 1)
+      console.log("Player after delet: ", players);
+
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
+    }
+  });
+
 }
 
 
@@ -497,6 +526,14 @@ function updatePlayer(playerCardId, playerName) {
     addBtn.classList.remove("hidden");
     updateBtn.classList.add("hidden");
     resetInputs();
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your changes has been saved",
+      showConfirmButton: false,
+      timer: 1500
+    });
 
   }  
 
