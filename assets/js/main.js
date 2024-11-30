@@ -97,11 +97,11 @@ function addPlayer(btn) {
     // console.log(btn.parentElement.parentElement) 
     let type = btn.getAttribute("data-type");
     const playerName = document.getElementById("name-input").value.trim();
-    const playerPhoto = document.getElementById("photo-input").files[0];
+    const playerPhoto = document.getElementById("photo-input").value.trim();
     const playerNationality = document.getElementById("nationality-input").value.trim();
-    const flag = document.getElementById("flag-input").files[0];
+    const flag = document.getElementById("flag-input").value.trim();
     const playerClub = document.getElementById("club-name-input").value.trim();
-    const clubLogo = document.getElementById("club-logo-input").files[0];
+    const clubLogo = document.getElementById("club-logo-input").value.trim();
     const playerRating = document.getElementById("rating-input").value.trim();
   
     // new player object
@@ -164,24 +164,40 @@ function resetInputs() {
 }
 
 function addPlayerToCard(player) {
+  const playerCard = document.createElement("div");
+  playerCard.id = `${player.position}-card`;
+
+  playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')";
+  playerCard.style.backgroundSize = "cover";
+  playerCard.style.backgroundPosition = "center";
+
+  playerCard.innerHTML = `
+    <div>
+      
+    </div>
+  `
+}
+
+function addPlayerToCard(player) {
     const playerCard = document.createElement("div");
     playerCard.id = `${player.position}-card`;
     playerCard.classList.add(
-        "player-card",
         "relative",
         "w-[150px]",
         "h-[200px]",
-        "bg-black/80",
+        // "bg-black/80",
         "rounded-md",
         "shadow-lg",
         "bg-green-500",
-        "scale-x-[0.8]"
+        "scale-[1.2]"
     )
-    playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; // Adjust path if needed
+    playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; 
     playerCard.style.backgroundSize = "cover"; // Ensures the image covers the element
     playerCard.style.backgroundPosition = "center";
+    playerCard.style.fontSize = ".6rem";
 
 
+    
     playerCard.innerHTML = `
     <div
               class="relative w-[100px] h-[200px] rounded-md shadow-lg"
@@ -195,7 +211,7 @@ function addPlayerToCard(player) {
                 class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
               >
                 <div
-                  class="w-[80px] h-[80px] rounded-full overflow-hidden mb-2"
+                  class="rounded-full overflow-hidden mb-2" style="width: 50px; height: 50px"
                 >
                   <img
                     src="https://cdn.sofifa.net/players/158/023/25_120.png"
@@ -206,43 +222,35 @@ function addPlayerToCard(player) {
 
                 <p class="font-bold text-sm text-center">${player.name}</p>
 
-                <div class="grid grid-cols-3 mt-2 text-xs text-center">
-                  <div>
-                    <p class="">PAC</p>
-                    <p class="">${player.stats.pace}</p>
+                <div class="mt-2 text-xs text-center" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+                    ${player.position === "gk"
+                      ? `
+                        <div><p>Diving</p><p>${player.stats.diving}</p></div>
+                        <div><p>Handling</p><p>${player.stats.handling}</p></div>
+                        <div><p>Kicking</p><p>${player.stats.kicking}</p></div>
+                        <div><p>Reflexes</p><p>${player.stats.reflexes}</p></div>
+                        <div><p>Speed</p><p>${player.stats.speed}</p></div>
+                        <div><p>Positioning</p><p>${player.stats.positioning}</p></div>
+                      `
+                      : `
+                        <div><p>PAC</p><p>${player.stats.pace}</p></div>
+                        <div><p>SHO</p><p>${player.stats.shooting}</p></div>
+                        <div><p>PAS</p><p>${player.stats.passing}</p></div>
+                        <div><p>DRI</p><p>${player.stats.dribbling}</p></div>
+                        <div><p>DEF</p><p>${player.stats.defending}</p></div>
+                        <div><p>PHY</p><p>${player.stats.physical}</p></div>
+                      `}
                   </div>
-                  <div>
-                    <p class="">SHO</p>
-                    <p class="">${player.stats.shooting}</p>
-                  </div>
-                  <div>
-                    <p class="">PAS</p>
-                    <p class="">${player.stats.shooting}</p>
-                  </div>
-                  <div>
-                    <p class="">DRI</p>
-                    <p class="">${player.stats.dribbling}</p>
-                  </div>
-                  <div>
-                    <p class="">DEF</p>
-                    <p class="">${player.stats.defending}</p>
-                  </div>
-                  <div>
-                    <p class="">PHY</p>
-                    <p class="">${player.stats.physical}</p>
-                  </div>
-                </div>
                 <div class="icons absolute top-0 right-0 flex flex-col">
                   <div id="delete-icon" class="cursor-pointer" onclick="deletePlayer('${playerCard.id}', '${player.name}')">
                     <i class="fa-solid fa-trash" style="color: #63e6be"></i>
                   </div>
-                  <div id="update-icon" class="cursor-pointer">
+                  <div id="update-icon" class="cursor-pointer" onclick="updatePlayer('${playerCard.id}', '${player.name}')">
                     <i
                       class="fa-solid fa-pen-to-square"
                       style="color: #63e6be"
                     ></i>
                   </div>
-              </div>
               </div>
             </div>
   `
@@ -251,6 +259,7 @@ function addPlayerToCard(player) {
     if(player.status === "main") {
       console.log("it's a main player");
       const cardElement = document.querySelector(`.${player.position.toUpperCase()}`);
+      // console.log("card Element", cardElement);
       // console.log(cardElement);
       const firstChild = cardElement.firstElementChild;
       firstChild.classList.add("hidden");
@@ -281,11 +290,11 @@ function addPlayerToCard(player) {
 
 function addSubs() {
     const playerName = document.getElementById("name-input").value.trim();
-    const playerPhoto = document.getElementById("photo-input").files[0];
+    const playerPhoto = document.getElementById("photo-input").value.trim();
     const playerNationality = document.getElementById("nationality-input").value.trim();
-    const flag = document.getElementById("flag-input").files[0];
+    const flag = document.getElementById("flag-input").value.trim();
     const playerClub = document.getElementById("club-name-input").value.trim();
-    const clubLogo = document.getElementById("club-logo-input").files[0];
+    const clubLogo = document.getElementById("club-logo-input").value.trim();
     const playerRating = document.getElementById("rating-input").value.trim();
     const playerPosition = document.getElementById("position-input").value.toLowerCase();
 
@@ -340,6 +349,164 @@ function deletePlayer(cardId, playerName) {
   document.getElementById(cardId).remove();
   players.splice(0, 1)
   console.log("Player after delet: ", players)
+}
+
+
+// Update Plyaer function
+function updatePlayer(playerCardId, playerName) {
+  console.log("updating player")
+
+
+  const player = players.find(item => playerName === item.name);
+  console.log(player);
+
+  gkStats.classList.add("hidden");
+  playerStats.classList.add("hidden");
+
+  document.getElementById("name-input").value = player.name;
+  document.getElementById("photo-input").value = player.photo;
+  document.getElementById("nationality-input").value = player.nationality;
+  document.getElementById("flag-input").value = player.flag;
+  document.getElementById("club-name-input").value = player.club;
+  document.getElementById("club-logo-input").value = player.clubLogo;
+  document.getElementById("rating-input").value = player.rating;
+  document.getElementById("position-input").value = player.position;
+  
+  // console.log(player.position)
+  if(player.position === "gk") {
+    gkStats.classList.replace("hidden", "flex");
+    document.getElementById("diving-input").value = player.stats.diving;
+    document.getElementById("handling-input").value = player.stats.handling;
+    document.getElementById("kicking-input").value = player.stats.kicking;
+    document.getElementById("reflexes-input").value = player.stats.reflexes;
+    document.getElementById("speed-input").value = player.stats.speed;
+    document.getElementById("positioning-input").value = player.stats.positioning;
+  } else {
+    playerStats.classList.replace("hidden", "flex");
+    document.getElementById("pace-input").value = player.stats.pace;
+    document.getElementById("shooting-input").value = player.stats.shooting;
+    document.getElementById("passing-input").value = player.stats.passing;
+    document.getElementById("dribbling-input").value = player.stats.dribbling;
+    document.getElementById("defending-input").value = player.stats.defending;
+    document.getElementById("pysical-input").value = player.stats.physical;
+  }
+
+  // const addBtn = document.getElementById("add-player")
+  // addBtn.replaceWith(addBtn.cloneNode(true));
+  // const newAddBtn = document.getElementById("add-player");
+  
+  // newAddBtn.textContent = "Update";
+
+  showModal(); 
+  document.getElementById("player-form").classList.remove("hidden")
+
+  const playerCard = document.getElementById(playerCardId).lastElementChild;
+  console.log("playerCard", playerCard);
+
+  // show update btn
+  const updateBtn = document.getElementById("update-btn");
+  updateBtn.classList.remove("hidden");
+  addBtn.classList.add("hidden")
+
+  updateBtn.addEventListener("click", saveUpdatedPlayer);
+
+  // newAddBtn.addEventListener("click", saveUpdatedPlayer);
+
+  function saveUpdatedPlayer() {
+
+    player.name = document.getElementById("name-input").value.trim();
+    console.log(document.getElementById("name-input").value)
+    player.photo = document.getElementById("photo-input").value.trim();
+    player.nationality = document.getElementById("nationality-input").value.trim();
+    player.flag = document.getElementById("flag-input").value.trim();
+    player.club = document.getElementById("club-name-input").value.trim();
+    player.clubLogo = document.getElementById("club-logo-input").value.trim();
+    player.rating = document.getElementById("rating-input").value.trim();
+
+
+    if (player.position === "gk") {
+        player.stats.diving = document.getElementById("diving-input").value.trim();
+        player.stats.handling = document.getElementById("handling-input").value.trim();
+        player.stats.kicking = document.getElementById("kicking-input").value.trim();
+        player.stats.reflexes = document.getElementById("reflexes-input").value.trim();
+        player.stats.speed = document.getElementById("speed-input").value.trim();
+        player.stats.positioning = document.getElementById("positioning-input").value.trim();
+    } else {
+        player.stats.pace = document.getElementById("pace-input").value.trim();
+        player.stats.shooting = document.getElementById("shooting-input").value.trim();
+        player.stats.passing = document.getElementById("passing-input").value.trim();
+        player.stats.dribbling = document.getElementById("dribbling-input").value.trim();
+        player.stats.defending = document.getElementById("defending-input").value.trim();
+        player.stats.physical = document.getElementById("pysical-input").value.trim();
+    }
+    
+    
+
+    if(player.status === "main") {
+      console.log("Updating the main player")
+      
+      playerCard.innerHTML = `
+
+                <div
+                  class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
+                >
+                  <div
+                    class="rounded-full overflow-hidden mb-2"
+                    style="width: 60px; height: 60px"
+                  >
+                    <img
+                      src="https://cdn.sofifa.net/players/158/023/25_120.png"
+                      alt="Player"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <p class="font-bold text-sm text-center">${player.name}</p>
+
+                  <div class="mt-2 text-xs text-center" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+                    ${player.position === "gk"
+                      ? `
+                        <div><p>Diving</p><p>${player.stats.diving}</p></div>
+                        <div><p>Handling</p><p>${player.stats.handling}</p></div>
+                        <div><p>Kicking</p><p>${player.stats.kicking}</p></div>
+                        <div><p>Reflexes</p><p>${player.stats.reflexes}</p></div>
+                        <div><p>Speed</p><p>${player.stats.speed}</p></div>
+                        <div><p>Positioning</p><p>${player.stats.positioning}</p></div>
+                      `
+                      : `
+                        <div><p>PAC</p><p>${player.stats.pace}</p></div>
+                        <div><p>SHO</p><p>${player.stats.shooting}</p></div>
+                        <div><p>PAS</p><p>${player.stats.passing}</p></div>
+                        <div><p>DRI</p><p>${player.stats.dribbling}</p></div>
+                        <div><p>DEF</p><p>${player.stats.defending}</p></div>
+                        <div><p>PHY</p><p>${player.stats.physical}</p></div>
+                      `}
+                  </div>
+                  <div class="icons absolute top-0 right-0 flex flex-col">
+                    <div id="delete-icon" class="cursor-pointer" onclick="deletePlayer('${playerCardId}', '${player.name}')">
+                      <i class="fa-solid fa-trash" style="color: #63e6be"></i>
+                    </div>
+                    <div id="update-icon" class="cursor-pointer" onclick="updatePlayer('${playerCardId}', '${player.name}')">
+                      <i
+                        class="fa-solid fa-pen-to-square"
+                        style="color: #63e6be"
+                      ></i>
+                    </div>
+                  </div>
+              </div>
+    `;
+
+    }
+
+    hideModal();  
+    addBtn.classList.remove("hidden");
+    updateBtn.classList.add("hidden");
+    resetInputs();
+
+  }  
+
+  console.log("players after updating: ", players)
+
 }
 
 
