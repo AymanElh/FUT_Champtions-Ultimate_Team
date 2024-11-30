@@ -232,6 +232,17 @@ function addPlayerToCard(player) {
                     <p class="">${player.stats.physical}</p>
                   </div>
                 </div>
+                <div class="icons absolute top-0 right-0 flex flex-col">
+                  <div id="delete-icon" class="cursor-pointer" onclick="deletePlayer('${playerCard.id}', '${player.name}')">
+                    <i class="fa-solid fa-trash" style="color: #63e6be"></i>
+                  </div>
+                  <div id="update-icon" class="cursor-pointer">
+                    <i
+                      class="fa-solid fa-pen-to-square"
+                      style="color: #63e6be"
+                    ></i>
+                  </div>
+              </div>
               </div>
             </div>
   `
@@ -315,6 +326,21 @@ function addSubs() {
   addPlayerToCard(newPlayer)
 }
 
+
+// Delete player function 
+function deletePlayer(cardId, playerName) {
+  console.log("Deleting a player")
+  const playerCard = document.getElementById(cardId);
+  const defaultCard = playerCard.parentElement.firstElementChild;
+  // console.log("Player Card: ", playerCard)
+  // console.log("Fist element child", defaultCard);
+  const deletedPlayer = players.findIndex(item => item.name === playerName);
+  // console.log(deletedPlayer);
+  defaultCard.classList.remove("hidden");
+  document.getElementById(cardId).remove();
+  players.splice(0, 1)
+  console.log("Player after delet: ", players)
+}
 
 
 // Change the formation
