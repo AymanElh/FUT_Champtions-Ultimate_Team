@@ -185,11 +185,10 @@ function addPlayerToCard(player) {
         "relative",
         "w-[150px]",
         "h-[200px]",
-        // "bg-black/80",
+        "bg-black/80",
         "rounded-md",
         "shadow-lg",
-        "bg-green-500",
-        "scale-[1.2]"
+        // "scale-[1.2]"
     )
     playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; 
     playerCard.style.backgroundSize = "cover"; // Ensures the image covers the element
@@ -200,12 +199,8 @@ function addPlayerToCard(player) {
     
     playerCard.innerHTML = `
     <div
-              class="relative w-[100px] h-[200px] rounded-md shadow-lg"
+              class="relative w-[147px] h-[173px] rounded-md shadow-lg"
             >
-              <div
-                class="absolute rounded-md"
-                style="background-image: url('')"
-              ></div>
 
               <div
                 class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
@@ -222,7 +217,7 @@ function addPlayerToCard(player) {
 
                 <p class="font-bold text-sm text-center">${player.name}</p>
 
-                <div class="mt-2 text-xs text-center" style="display: grid; grid-template-columns: repeat(3, 1fr)">
+                <div class="grid grid-cols-3 mt-2 text-xs text-center" ">
                     ${player.position === "gk"
                       ? `
                         <div><p>Diving</p><p>${player.stats.diving}</p></div>
