@@ -163,20 +163,7 @@ function resetInputs() {
     document.getElementById("pysical-input").value = "";
 }
 
-function addPlayerToCard(player) {
-  const playerCard = document.createElement("div");
-  playerCard.id = `${player.position}-card`;
 
-  playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')";
-  playerCard.style.backgroundSize = "cover";
-  playerCard.style.backgroundPosition = "center";
-
-  playerCard.innerHTML = `
-    <div>
-      
-    </div>
-  `
-}
 
 function addPlayerToCard(player) {
     const playerCard = document.createElement("div");
@@ -191,7 +178,7 @@ function addPlayerToCard(player) {
         // "scale-[1.2]"
     )
     playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; 
-    playerCard.style.backgroundSize = "cover"; // Ensures the image covers the element
+    playerCard.style.backgroundSize = "cover"; 
     playerCard.style.backgroundPosition = "center";
     playerCard.style.fontSize = ".6rem";
 
@@ -289,6 +276,8 @@ function addPlayerToCard(player) {
       showConfirmButton: false,
       timer: 1500
     });
+
+    addToLocalStorage();
 }
 
 function addSubs() {
@@ -545,4 +534,21 @@ function updatePlayer(playerCardId, playerName) {
 // Change the formation
 document.getElementById("formation-select").addEventListener("change", () => {
     changeFormation(formation.value)
+})
+
+
+function addToLocalStorage() {
+  window.localStorage.setItem("players", JSON.stringify(players));
+}
+
+function renderPlayers() {
+  console.log("rendering player from local storage")
+  players.forEach(player => {
+    addPlayerToCard(player);
+  })
+}
+
+window.addEventListener("load", () => {
+  console.log("the page is loaded");  
+  renderPlayers();
 })
