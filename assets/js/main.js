@@ -1,5 +1,5 @@
 // array to strore palyers
-let players = []
+let players = JSON.parse(localStorage.getItem("players")) || [];
 const formation = document.getElementById("formation-select");
 const addBtn = document.getElementById("add-player");
 const squad = document.getElementById("squad-container");
@@ -13,6 +13,11 @@ function hideModal() {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
 }
+
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("default-modal");
+  if(event.target === modal) { hideModal() }
+})
 // fct to change formaiton
 function changeFormation(formation) {
     squad.classList.remove("formation442", "formation433");
@@ -536,7 +541,7 @@ document.getElementById("formation-select").addEventListener("change", () => {
     changeFormation(formation.value)
 })
 
-
+// Use local Storage
 function addToLocalStorage() {
   window.localStorage.setItem("players", JSON.stringify(players));
 }
