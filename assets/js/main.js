@@ -1,5 +1,5 @@
 // array to strore palyers
-let players = JSON.parse(localStorage.getItem("players")) || [];
+let players = JSON.parse(localStorage.getItem("players"));
 const formation = document.getElementById("formation-select");
 const addBtn = document.getElementById("add-player");
 const squad = document.getElementById("squad-container");
@@ -143,6 +143,7 @@ function addPlayer(btn) {
     players.push(newPlayer);
     console.log(players)
     addPlayerToCard(newPlayer);
+    addToLocalStorage();
 }
 
 function resetInputs() {
@@ -281,8 +282,6 @@ function addPlayerToCard(player) {
       showConfirmButton: false,
       timer: 1500
     });
-
-    addToLocalStorage();
 }
 
 function addSubs() {
@@ -356,7 +355,7 @@ function deletePlayer(cardId, playerName) {
       defaultCard.classList.remove("hidden");
       document.getElementById(cardId).remove();
       players.splice(deletedPlayer, 1)
-      console.log("Player after delet: ", players);
+      // console.log("Player after delet: ", players);
 
 
       Swal.fire({
@@ -364,6 +363,9 @@ function deletePlayer(cardId, playerName) {
         text: "Your file has been deleted.",
         icon: "success"
       });
+
+      addToLocalStorage();
+      console.log("Players after delete", players)
     }
   });
 
@@ -428,7 +430,6 @@ function updatePlayer(playerCardId, playerName) {
 
   updateBtn.addEventListener("click", saveUpdatedPlayer);
 
-  // newAddBtn.addEventListener("click", saveUpdatedPlayer);
 
   function saveUpdatedPlayer() {
 
@@ -514,6 +515,9 @@ function updatePlayer(playerCardId, playerName) {
               </div>
     `;
 
+    addToLocalStorage()
+    console.log(players)
+
     }
 
     hideModal();  
@@ -530,8 +534,7 @@ function updatePlayer(playerCardId, playerName) {
     });
 
   }  
-
-  console.log("players after updating: ", players)
+  
 
 }
 
@@ -548,11 +551,13 @@ function addToLocalStorage() {
 
 function renderPlayers() {
   console.log("rendering player from local storage")
+  players = JSON.parse(localStorage.getItem("players"))
   players.forEach(player => {
     addPlayerToCard(player);
   })
 }
 
+console.log("Player final", players);
 window.addEventListener("load", () => {
   console.log("the page is loaded");  
   renderPlayers();
