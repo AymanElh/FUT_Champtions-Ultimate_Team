@@ -212,7 +212,7 @@ function addPlayerToCard(player) {
     )
     let subsCounter = 0;
     playerCard.setAttribute("data-position", player.position);
-
+    playerCard.setAttribute("draggable", false)
     if(player.status === "main") {
       playerCard.classList.add("player-main-card");
       playerCard.id = `${player.position}-card`;
@@ -232,7 +232,7 @@ function addPlayerToCard(player) {
     
     playerCard.innerHTML = `
     <div
-              class="relative w-[147px] h-[173px] rounded-md shadow-lg"
+              class="relative w-[147px] h-[173px] rounded-md shadow-lg" 
             >
 
               <div
