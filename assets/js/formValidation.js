@@ -176,7 +176,7 @@ function goalKeeperValidation() {
 
 
 function showError(input, message="") {
-    console.log("showing the error ..");
+    // console.log("showing the error ..");
     const error = input.nextElementSibling;
     error.textContent = message;
     error.classList.remove("hidden")
@@ -185,7 +185,7 @@ function showError(input, message="") {
 }
 
 function hideError(input) {
-    console.log("hiding the error ..")
+    // console.log("hiding the error ..")
     input.classList.remove("border-red-700");
     const error = input.nextElementSibling;
     error.textContent = "";

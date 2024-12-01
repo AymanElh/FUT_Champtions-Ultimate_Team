@@ -87,8 +87,17 @@ document.getElementById("add-player").addEventListener("click", () => {
 
       // check the form validation
       let isValid = false;
-      const isGk = currentBtn.getAttribute("data-type") === "gk";
+      let isGk;
+      if(currentBtn.getAttribute("data-type")) {
+        isGk = currentBtn.getAttribute("data-type") === "gk";
+      } else {
+        let position = document.getElementById("position-input").value.toLowerCase();
+        isGk = position === "gk"
+      }
+
       
+
+      console.log("Position Type:", isGk ? "Goalkeeper" : "Normal Player")
       if(isGk) {
         console.log("Gk validation active");
         isValid = generalValidation() && goalKeeperValidation();
@@ -223,14 +232,14 @@ function addPlayerToCard(player) {
     
     playerCard.innerHTML = `
     <div
-              class="relative w-[147px] h-[173px] rounded-md shadow-lg cursor-pointer"
+              class="relative w-[147px] h-[173px] rounded-md shadow-lg"
             >
 
               <div
                 class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
               >
                 <div
-                  class="rounded-full overflow-hidden mb-2" style="width: 50px; height: 50px"
+                  class="player-img cursor-pointer rounded-full overflow-hidden mb-2" style="width: 50px; height: 50px"
                 >
                   <img
                     src="${player.photo}"
@@ -246,10 +255,10 @@ function addPlayerToCard(player) {
                       ? `
                         <div><p>Diving</p><p>${player.stats.diving}</p></div>
                         <div><p>Handling</p><p>${player.stats.handling}</p></div>
-                        <div><p>Kicking</p><p>${player.stats.kicking}</p></div>
-                        <div><p>Reflexes</p><p>${player.stats.reflexes}</p></div>
+                        <div><p>Kick</p><p>${player.stats.kicking}</p></div>
+                        <div><p>Reflex</p><p>${player.stats.reflexes}</p></div>
                         <div><p>Speed</p><p>${player.stats.speed}</p></div>
-                        <div><p>Positioning</p><p>${player.stats.positioning}</p></div>
+                        <div><p>POS</p><p>${player.stats.positioning}</p></div>
                       `
                       : `
                         <div><p>PAC</p><p>${player.stats.pace}</p></div>
@@ -526,7 +535,7 @@ function updatePlayer(playerCardId, playerName) {
                   class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
                 >
                   <div
-                    class="rounded-full overflow-hidden mb-2"
+                    class="player-img cursor-pointer rounded-full overflow-hidden mb-2"
                     style="width: 60px; height: 60px"
                   >
                     <img
