@@ -201,7 +201,7 @@ function addPlayerToCard(player) {
         "shadow-lg",
         // "scale-[1.2]"
     )
-
+    let subsCounter = 0;
     playerCard.setAttribute("data-position", player.position);
 
     if(player.status === "main") {
@@ -209,6 +209,8 @@ function addPlayerToCard(player) {
       playerCard.id = `${player.position}-card`;
 
     } else {
+      subsCounter++;
+      playerCard.id = `subs-${subsCounter}`
       playerCard.classList.add("player-subs-card");
     }
 
@@ -365,6 +367,7 @@ function addSubs() {
 // Delete player function 
 function deletePlayer(cardId, playerName) {
   console.log("Deleting a player")
+  console.log(cardId, playerName);
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -385,7 +388,7 @@ function deletePlayer(cardId, playerName) {
       defaultCard.classList.remove("hidden");
       document.getElementById(cardId).remove();
       players.splice(deletedPlayer, 1)
-      // console.log("Player after delet: ", players);
+      console.log("Player after delet: ", players);
 
 
       Swal.fire({
@@ -514,7 +517,7 @@ function updatePlayer(playerCardId, playerName) {
     
     
 
-    if(player.status === "main") {
+    // if(player.status === "main") {
       console.log("Updating the main player")
       
       playerCard.innerHTML = `
@@ -527,7 +530,7 @@ function updatePlayer(playerCardId, playerName) {
                     style="width: 60px; height: 60px"
                   >
                     <img
-                      src="https://cdn.sofifa.net/players/158/023/25_120.png"
+                      src="${player.photo}"
                       alt="Player"
                       class="w-full h-full object-cover"
                     />
@@ -571,7 +574,7 @@ function updatePlayer(playerCardId, playerName) {
     addToLocalStorage()
     console.log(players)
 
-    }
+    // }
 
     hideModal();  
     addBtn.classList.remove("hidden");
