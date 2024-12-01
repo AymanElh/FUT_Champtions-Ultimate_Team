@@ -116,9 +116,9 @@
   color: white;
 }
 
-.player-name, .player-flags {
+/* .player-name, .player-flags {
   transform: translateX(-15px)
-}
+} */
 
 .player-img {
   transform: translate(12px, -70px)

@@ -192,7 +192,6 @@ function resetInputs() {
 
 function addPlayerToCard(player) {
     const playerCard = document.createElement("div");
-    playerCard.id = `${player.position}-card`;
     playerCard.classList.add(
         "relative",
         "w-[150px]",
@@ -202,6 +201,17 @@ function addPlayerToCard(player) {
         "shadow-lg",
         // "scale-[1.2]"
     )
+
+    playerCard.setAttribute("data-position", player.position);
+
+    if(player.status === "main") {
+      playerCard.classList.add("player-main-card");
+      playerCard.id = `${player.position}-card`;
+
+    } else {
+      playerCard.classList.add("player-subs-card");
+    }
+
     playerCard.style.backgroundImage = "url('/assets/img/badge_total_rush.webp')"; 
     playerCard.style.backgroundSize = "cover"; 
     playerCard.style.backgroundPosition = "center";
@@ -211,7 +221,7 @@ function addPlayerToCard(player) {
     
     playerCard.innerHTML = `
     <div
-              class="relative w-[147px] h-[173px] rounded-md shadow-lg"
+              class="relative w-[147px] h-[173px] rounded-md shadow-lg cursor-pointer"
             >
 
               <div
@@ -227,7 +237,7 @@ function addPlayerToCard(player) {
                   />
                 </div>
 
-                <p class="font-bold text-sm text-center">${player.name}</p>
+                <p class="player-name font-bold text-sm text-center">${player.name}</p>
 
                 <div class="grid grid-cols-3 mt-2 text-xs text-center" ">
                     ${player.position === "gk"
