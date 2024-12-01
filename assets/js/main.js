@@ -1,5 +1,5 @@
 // array to strore palyers
-let players = JSON.parse(localStorage.getItem("players"));
+let players = JSON.parse(localStorage.getItem("players")) || [];
 const formation = document.getElementById("formation-select");
 const addBtn = document.getElementById("add-player");
 const squad = document.getElementById("squad-container");
@@ -45,7 +45,7 @@ plusBtns.forEach((btn) => {
         gkStats.classList.remove("flex");
         playerStats.classList.add("hidden");
         playerStats.classList.remove("flex");
-        form.classList.replace("hidden", "flex");
+        // form.classList.replace("hidden", "flex");
         showModal();
         // check the player if is in the substitutions
         if (isSubPlayer) {
@@ -157,7 +157,8 @@ function addPlayer(btn) {
     }
     // reset inputs
     resetInputs();
-    document.getElementById("player-form").classList.add("hidden")
+    // document.getElementById("player-form").classList.add("hidden")
+    hideModal();
     players.push(newPlayer);
     console.log(players)
     addPlayerToCard(newPlayer);
@@ -220,7 +221,7 @@ function addPlayerToCard(player) {
                   class="rounded-full overflow-hidden mb-2" style="width: 50px; height: 50px"
                 >
                   <img
-                    src="https://cdn.sofifa.net/players/158/023/25_120.png"
+                    src="${player.photo}"
                     alt="Player"
                     class="w-full h-full object-cover"
                   />
@@ -347,6 +348,7 @@ function addSubs() {
   players.push(newPlayer);
   console.log("add new sub player", players)
   addPlayerToCard(newPlayer)
+  addToLocalStorage()
 }
 
 
@@ -601,5 +603,7 @@ function renderPlayers() {
 console.log("Player final", players);
 window.addEventListener("load", () => {
   console.log("the page is loaded");  
-  renderPlayers();
+  if(players.length > 0) {
+    renderPlayers()
+  }
 })
