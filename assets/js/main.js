@@ -232,14 +232,14 @@ function addPlayerToCard(player) {
     
     playerCard.innerHTML = `
     <div
-              class="relative w-[147px] h-[173px] rounded-md shadow-lg" 
+              class="relative w-[160px] h-[163px] rounded-md shadow-lg top-[5%]" 
             >
 
               <div
-                class="relative z-10 flex flex-col items-center justify-center h-full text-white p-2"
+                class="relative z-10 flex flex-col items-center justify-center h-full text-white"
               >
                 <div
-                  class="player-img cursor-pointer rounded-full overflow-hidden mb-2" style="width: 50px; height: 50px"
+                  class="player-img cursor-pointer rounded-full overflow-hidden" style="width: 50px; height: 50px"
                 >
                   <img
                     src="${player.photo}"
@@ -250,7 +250,7 @@ function addPlayerToCard(player) {
 
                 <p class="player-name font-bold text-sm text-center">${player.name}</p>
 
-                <div class="grid grid-cols-3 mt-2 text-xs text-center" ">
+                <div class="grid grid-cols-3 gap-0 text-xs text-center">
                     ${player.position === "gk"
                       ? `
                         <div><p>Diving</p><p>${player.stats.diving}</p></div>
@@ -269,7 +269,11 @@ function addPlayerToCard(player) {
                         <div><p>PHY</p><p>${player.stats.physical}</p></div>
                       `}
                   </div>
-                <div class="icons absolute top-0 right-0 flex flex-col">
+                  <div style="display: flex; gap: 8px; justify-content: center; width: 20px; height: 20px;">
+                      <img src="${player.flag}" alt="">
+                      <img src="${player.clubLogo}" alt="">
+                  </div>
+                <div class="icons absolute top-0 right-[8%] flex flex-col">
                   <div id="delete-icon" class="cursor-pointer" onclick="deletePlayer('${playerCard.id}', '${player.name}')">
                     <i class="fa-solid fa-trash" style="color: #63e6be"></i>
                   </div>
@@ -279,7 +283,7 @@ function addPlayerToCard(player) {
                       style="color: #63e6be"
                     ></i>
                   </div>
-              </div>
+                </div>
             </div>
   `
   
