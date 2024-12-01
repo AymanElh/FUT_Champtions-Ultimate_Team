@@ -84,6 +84,24 @@ playerPosition.addEventListener("change", () => {
 // add player btn event
 document.getElementById("add-player").addEventListener("click", () => {
     if (currentBtn) {
+
+      // check the form validation
+      let isValid = false;
+      const isGk = currentBtn.getAttribute("data-type") === "gk";
+      
+      if(isGk) {
+        console.log("Gk validation active");
+        isValid = generalValidation() && goalKeeperValidation();
+      } else {
+        console.log("Normal player validation active");
+        isValid = generalValidation() && normalPlayerValidation();
+      }
+
+      if(!isValid) {
+        alert("Form validation error");
+        return;
+      }
+      
       if (currentBtn.closest(".player")) {
         addPlayer(currentBtn);
         hideModal();
@@ -428,7 +446,30 @@ function updatePlayer(playerCardId, playerName) {
   updateBtn.classList.remove("hidden");
   addBtn.classList.add("hidden")
 
-  updateBtn.addEventListener("click", saveUpdatedPlayer);
+  // updateBtn.addEventListener("click", () => {});
+  
+  const newUpdateBtn = updateBtn.cloneNode(true);
+  updateBtn.replaceWith(newUpdateBtn);
+
+  newUpdateBtn.addEventListener("click", () => {
+    let isValid = false;
+
+    const isGk = player.position === "gk";
+    
+    if(isGk) {
+      isValid = generalValidation() && goalKeeperValidation();
+    } else {
+      isValid = generalValidation() && normalPlayerValidation();
+    }
+
+    if(!isValid) {
+      alert("form validatio error");
+      return;
+    } 
+
+    saveUpdatedPlayer();
+    
+  })
 
 
   function saveUpdatedPlayer() {
