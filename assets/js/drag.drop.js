@@ -4,7 +4,7 @@ setTimeout(() => {
     const subplayers = document.querySelectorAll(".player-subs-card");
     
     // console.log(mainplayers);
-    // console.log(subplayers);
+    console.log(subplayers);
 
     mainplayers.forEach(player => {
         player.addEventListener("dragstart", (e) => {
@@ -18,31 +18,41 @@ setTimeout(() => {
                     e.preventDefault();
                 });
 
-                sub.addEventListener("drop", (e) => {
-                    console.log(selected)
-                    const temp = sub.innerHTML;
-                    sub.innerHTML = selected.innerHTML;
-                    player.innerHTML = temp;
-                })
-            })
-
-            document.querySelectorAll(".subs-player").forEach(sub => {
-                
-                sub.addEventListener("dragover", (e) => {
-                    e.preventDefault()
-                });
-                
                 sub.addEventListener("drop", () => {
-                    console.log(selected.previousElementSibling.classList)
-                    selected.previousElementSibling.classList.remove("hidden")
-                    // sub.innerHTML = selected.innerHTML;
-                    console.log(sub.firstElementChild)
-                    sub.firstElementChild.classList.add("hidden");
-                    sub.appendChild(selected)
-                    
+                    if(validateposition(selected, sub)) {
+                        const temp = sub.innerHTML;
+                        sub.innerHTML = selected.innerHTML;
+                        selected.innerHTML = temp;
+
+                        console.log(selected.querySelector(".player-name").textContent);
+                        console.log(sub.querySelector(".player-name").textContent);
+
+                        const player1Name = selected.querySelector(".player-name").textContent;
+                        const player2Name = sub.querySelector(".player-name").textContent;
+
+                        const player1 = players.find(item => item.name === player1Name);
+                        const player2 = players.find(item => item.name === player2Name);
+
+                        // console.log(player1, player2)
+
+                        player1.status = "main";
+                        player2.status = "subs";
+                        // console.log(players)
+                        addToLocalStorage()
+                        selected = null;
+
+                    } else {
+                        alert("Players has not the same position");
+                        return;
+                    }
                 })
             })
+    
         })
     })
 
 }, 1000);
+
+function validateposition(player1, player2) {
+    return player1.getAttribute("data-position") === player2.getAttribute("data-position");
+} 
