@@ -269,6 +269,7 @@ function addPlayerToCard(player) {
                         <div><p>PHY</p><p>${player.stats.physical}</p></div>
                       `}
                   </div>
+                  <p class="font-bold text-sm text-red-500">${player.rating}</p>
                   <div style="display: flex; gap: 8px; justify-content: center; width: 20px; height: 20px;">
                       <img src="${player.flag}" alt="">
                       <img src="${player.clubLogo}" alt="">
