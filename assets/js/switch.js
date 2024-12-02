@@ -1,5 +1,5 @@
 
-
+const playersArr = JSON.parse(localStorage.getItem("players"))
 setTimeout(() => {
     const mainPlayers = document.querySelectorAll(".player-main-card");
     const subsPlayers = document.querySelectorAll(".player-subs-card")
@@ -42,11 +42,12 @@ function swap(player1, player2) {
 }
 
 function positionValidation(player1, player2) {
+    console.log(player1.getAttribute("data-position"), player2.getAttribute("data-position"))
     return player1.getAttribute("data-position") === player2.getAttribute("data-position")
 }
 
 function searchPlayer(name) {
-    const player = players.find(player => player.name == name);
+    const player = playersArr.find(player => player.name == name);
     return player
 } 
 

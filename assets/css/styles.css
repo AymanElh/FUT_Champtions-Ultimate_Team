@@ -7,7 +7,7 @@
 
 
 #squad-container {
-  width: 55rem;
+  width: 100%;
   height: 44rem;
   background-image: url(../img/stadium.svg); /* Adjust path as necessary */
   background-repeat: no-repeat;
@@ -133,4 +133,17 @@
   ". . GK . ."
   ;
 
+}
+
+@media (max-width: 800px) {
+  main {
+    align-items: center;
+  }
+  #squad {
+    width: 100%;
+  } 
+
+  #squad-container {
+    width: 100%
+  }
 }
